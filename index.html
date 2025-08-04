@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Portrait Drawing in Singapore | Classical Realism Art Classes</title>
+    <meta name="description" content="Learn realistic portrait drawing in Singapore. Master graphite, charcoal & ink techniques. From beginner to expert - capture human likeness with precision.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --charcoal-black: #2c2c2c;
+            --warm-graphite: #4a4a4a;
+            --soft-grey: #8a8a8a;
+            --cream-paper: #faf9f6;
+            --warm-sepia: #c4956c;
+            --deep-charcoal: #1a1a1a;
+            --blush-tone: #f4ebe4;
+            --gold-accent: #d4af37;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal-black);
+            background: linear-gradient(135deg, var(--cream-paper) 0%, var(--blush-tone) 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Elements */
+        .floating-sketch {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            font-size: 2rem;
+        }
+
+        .floating-sketch:nth-child(odd) {
+            animation-delay: -3s;
+        }
+
+        .floating-sketch:nth-child(even) {
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(3deg); }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--charcoal-black);
+            text-decoration: none;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, var(--warm-graphite), var(--charcoal-black));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(44, 44, 44, 0.2);
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--deep-charcoal) 0%, var(--charcoal-black) 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="sketchPattern" width="150" height="150" patternUnits="userSpaceOnUse"><path d="M30,30 Q50,20 70,30 Q90,40 110,30" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/><circle cx="75" cy="75" r="2" fill="rgba(255,255,255,0.02)"/><path d="M20,75 Q40,60 60,75 Q80,90 100,75" stroke="rgba(255,255,255,0.03)" stroke-width="1" fill="none"/></pattern></defs><rect width="100%" height="100%" fill="url(%23sketchPattern)"/></svg>');
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 0;
+                min-height: 100svh;
+                display: flex;
+                align-items: center;
+                padding-top: max(70px, env(safe-area-inset-top));
+            }
+            
+            .hero-content {
+                padding: 80px 0;
+            }
+            
+            .hero-text h1 {
+                font-size: 1.8rem;
+                line-height: 1.1;
+                padding: 0 10px;
+                margin-top: 0;
+                margin-bottom: 35px;
+            }
+            
+            .hero-text {
+                padding-top: 0;
+            }
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--warm-sepia);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .hero-text h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--warm-sepia), var(--gold-accent));
+            border-radius: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+            line-height: 1.5;
+        }
+
+        .hero-features {
+            list-style: none;
+            margin-bottom: 45px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-features li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .hero-features li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease 0.6s both;
+        }
+
+        .portrait-showcase {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-8deg) rotateX(5deg);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portrait-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(196, 149, 108, 0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portrait-showcase:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        .portrait-showcase:hover::before {
+            opacity: 1;
+        }
+
+        .portrait-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 400px;
+        }
+
+        .portrait-item {
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f8f8f8;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .portrait-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portrait-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+.portrait-item:first-child {
+    grid-row: span 2;
+    grid-column: span 2;  /* Add this line */
+}
+
+        .portrait-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 44, 44, 0.8));
+            color: white;
+            padding: 20px 15px 15px;
+            font-size: 0.9rem;
+        }
+
+        .overlay-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .overlay-medium {
+            opacity: 0.9;
+            font-size: 0.8rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--gold-accent), #f4d03f);
+            color: var(--deep-charcoal);
+            padding: 18px 38px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--soft-grey), transparent);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stats-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stats-single-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(44, 44, 44, 0.15);
+        }
+
+        .stats-single-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 45px rgba(44, 44, 44, 0.2);
+        }
+
+        .stat-item {
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--charcoal-black);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--warm-graphite);
+            font-weight: 500;
+        }
+
+        /* Course Overview */
+        .course-overview {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--blush-tone) 0%, var(--cream-paper) 100%);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--charcoal-black);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--warm-graphite);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .module-card {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(44, 44, 44, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--warm-sepia), var(--charcoal-black));
+        }
+
+        .module-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(44, 44, 44, 0.15);
+        }
+
+        .module-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--warm-sepia), var(--warm-graphite));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+        }
+
+        .module-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--charcoal-black);
+            margin-bottom: 15px;
+        }
+
+        .module-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .module-topics {
+            list-style: none;
+        }
+
+        .module-topics li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--warm-graphite);
+            font-size: 0.95rem;
+        }
+
+        .module-topics li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warm-sepia);
+            font-weight: bold;
+        }
+
+        /* Techniques Section */
+        .techniques-section {
+            padding: 100px 0;
+            background: var(--charcoal-black);
+            color: white;
+            position: relative;
+        }
+
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .technique-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .technique-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+        }
+
+        .technique-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--gold-accent), var(--warm-sepia));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .technique-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--warm-sepia);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, var(--charcoal-black) 0%, var(--deep-charcoal) 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 25px;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 2px solid var(--gold-accent);
+            text-align: center;
+        }
+
+        .pricing-card.trial {
+            background: linear-gradient(135deg, var(--warm-graphite) 0%, var(--charcoal-black) 100%);
+            border-color: var(--warm-sepia);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(44, 44, 44, 0.25), 0 0 40px rgba(212, 175, 55, 0.15);
+            border-width: 3px;
+        }
+
+        .pricing-card.trial:hover {
+            box-shadow: 0 30px 70px rgba(196, 149, 108, 0.25), 0 0 40px rgba(196, 149, 108, 0.15);
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--gold-accent);
+            margin-bottom: 15px;
+        }
+
+        .price-period {
+            color: #ccc;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Student Gallery Section */
+        .student-gallery-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0ebe5 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(44, 44, 44, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(44, 44, 44, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .overlay-student {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .gallery-cta {
+            text-align: center;
+        }
+
+        .gallery-cta p {
+            font-size: 1.3rem;
+            color: var(--charcoal-black);
+            margin-bottom: 25px;
+        }
+
+        /* Studio Showcase Section */
+        .studio-showcase {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .studio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .studio-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .studio-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .studio-features li::before {
+            content: '🏛️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Studio Carousel */
+        .studio-carousel {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(44, 44, 44, 0.15);
+            height: 700px;
+            min-height: 700px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 44, 44, 0.8));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .carousel-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .carousel-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 44, 44, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: var(--charcoal-black);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--warm-graphite) 0%, var(--charcoal-black) 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q30,30 40,50 T60,50 T80,50" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .final-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta p {
+            font-size: 1.4rem;
+            margin-bottom: 45px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 35px;
+            border: 2px solid white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--charcoal-black);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: var(--warm-sepia);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.7;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .portrait-showcase {
+                transform: none;
+                margin-top: 40px;
+            }
+
+            .portrait-gallery {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .portrait-item:first-child {
+                grid-row: span 1;
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stats-single-image {
+                height: 300px;
+            }
+
+            .techniques-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .studio-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="white" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222-99.6 222-222 0-59.3-23.2-115-65.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.9-5-4.9-10.5-6.6z"/></svg>');
+            background-size: 32px 32px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #25D366;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-left-color: var(--deep-charcoal);
+        }
+
+        .whatsapp-button:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Contact Form Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .contact-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay.active .contact-modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--charcoal-black);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.row {
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .form-group.row .form-group {
+            flex: 1;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--deep-charcoal);
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 15px;
+            border: 2px solid #e8e0d8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--charcoal-black);
+            box-shadow: 0 0 0 3px rgba(44, 44, 44, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--charcoal-black), var(--deep-charcoal));
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 44, 44, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success and Error messages */
+        .success-message, .error-message {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .success-message.show, .error-message.show {
+            display: block;
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--warm-sepia) 0%, var(--warm-graphite) 100%);
+            color: white;
+        }
+
+        .schedule-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .schedule-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(44, 44, 44, 0.1);
+        }
+
+        .schedule-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(44, 44, 44, 0.2);
+        }
+
+        .schedule-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .schedule-day {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .schedule-time {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--cream-paper);
+        }
+
+        .schedule-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-sketch" style="top: 10%; left: 5%;">✏️</div>
+    <div class="floating-sketch" style="top: 20%; right: 10%;">🎨</div>
+    <div class="floating-sketch" style="top: 60%; left: 8%;">📐</div>
+    <div class="floating-sketch" style="top: 80%; right: 15%;">🖊️</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Singapore Studio of Realist Art</a>
+                <a href="#pricing" class="cta-header ripple">Start Your Portrait Journey</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Master the Art of <span class="highlight">Portrait Drawing</span></h1>
+                    <p class="hero-subtitle">Where human observation meets artistic precision. Learn to capture likeness, expression, and character through classical drawing techniques.</p>
+                    <ul class="hero-features">
+                        <li>Classical portrait techniques to draw realistic faces</li>
+                        <li>Master proportion, shading, and anatomy</li>
+                        <li>Accuracy & precision with expressive drawing</li>
+                        <li>Small classes with personalized guidance</li>
+                        <li>All materials provided</li>
+                    </ul>
+                    <a href="#pricing" class="cta-primary ripple">Start Drawing Portraits - $50 Trial</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="portrait-showcase">
+                        <div class="portrait-gallery">
+                            <div class="portrait-item">
+                                <img src="https://drawpaint-sg.com/wp-content/uploads/2025/07/IMG_0844-min-scaled.jpg" alt="Classical Portrait Study">
+                                <div class="portrait-overlay">
+                                    <div class="overlay-title">Classical Portrait Study</div>
+                                    <div class="overlay-medium">Graphite on Paper</div>
+                                </div>
+                            </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">13+</span>
+                        <div class="stat-label">Years Teaching in Singapore</div>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">2000+</span>
+                        <div class="stat-label">Students Trained</div>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">100+</span>
+                        <div class="stat-label">Google Reviews</div>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">4.9</span>
+                        <div class="stat-label">Stars Rating</div>
+                    </div>
+                </div>
+                <div class="stats-visual animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2024/02/IMG_0126-scaled.webp" alt="Portrait Drawing" class="stats-single-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="course-overview">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Your Portrait Drawing Journey</h2>
+                <p class="section-subtitle">A comprehensive 10-session program from basic proportions to creating lifelike portrait drawings</p>
+            </div>
+            <div class="course-modules">
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">📏</div>
+                    <h3 class="module-title">Facial Proportions & Structure</h3>
+                    <p class="module-description">Master the fundamental proportions and underlying structure of the human face.</p>
+                    <ul class="module-topics">
+                        <li>Basic facial proportions & measurements</li>
+                        <li>Skull structure & bone landmarks</li>
+                        <li>Placement of features (eyes, nose, mouth)</li>
+                        <li>Head construction from multiple angles</li>
+                    </ul>
+                </div>
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">👁️</div>
+                    <h3 class="module-title">Feature Study & Anatomy</h3>
+                    <p class="module-description">Detailed study of individual facial features and their anatomical structure.</p>
+                    <ul class="module-topics">
+                        <li>Eye anatomy & construction</li>
+                        <li>Nose structure & shadow patterns</li>
+                        <li>Mouth & lips from different angles</li>
+                        <li>Ear construction & detail work</li>
+                    </ul>
+                </div>
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">💡</div>
+                    <h3 class="module-title">Light & Shadow Mastery</h3>
+                    <p class="module-description">Understanding how light reveals form and creates dimension in portrait drawing.</p>
+                    <ul class="module-topics">
+                        <li>Light source analysis & setup</li>
+                        <li>Core shadows & cast shadows</li>
+                        <li>Reflected light & halftones</li>
+                        <li>Form modeling techniques</li>
+                    </ul>
+                </div>
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">🎯</div>
+                    <h3 class="module-title">Likeness & Expression</h3>
+                    <p class="module-description">Capture not just accurate proportions but the unique character and expression of your subject.</p>
+                    <ul class="module-topics">
+                        <li>Observational drawing techniques</li>
+                        <li>Capturing individual characteristics</li>
+                        <li>Expression through feature placement</li>
+                        <li>Personality in portrait work</li>
+                    </ul>
+                </div>
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">✏️</div>
+                    <h3 class="module-title">Drawing Techniques & Media</h3>
+                    <p class="module-description">Master various drawing materials and techniques for portrait work.</p>
+                    <ul class="module-topics">
+                        <li>Graphite pencil techniques</li>
+                        <li>Charcoal application & blending</li>
+                        <li>Adding colour with chalk and sanguine</li>
+                        <li>Paper selection & surface preparation</li>
+                    </ul>
+                </div>
+                <div class="module-card animate-on-scroll">
+                    <div class="module-icon">🎨</div>
+                    <h3 class="module-title">Finished Portrait Creation</h3>
+                    <p class="module-description">Bring together all skills to create complete, professional-quality portrait drawings.</p>
+                    <ul class="module-topics">
+                        <li>Composition & background treatment</li>
+                        <li>Final refinement techniques</li>
+                        <li>Presentation & portfolio development</li>
+                        <li>Critique & artistic growth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section class="techniques-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title" style="color: white;">Classical Drawing Techniques</h2>
+                <p class="section-subtitle" style="color: var(--warm-sepia);">Learn the time-honored methods used by master portrait artists</p>
+            </div>
+            <div class="techniques-grid">
+                <div class="technique-card animate-on-scroll">
+                    <div class="technique-icon">✏️</div>
+                    <h3 class="technique-title">Graphite Mastery</h3>
+                    <p>Traditional pencil techniques for precise line work, smooth tonal gradations, and detailed portrait studies with full range values.</p>
+                </div>
+                <div class="technique-card animate-on-scroll">
+                    <div class="technique-icon">⚫</div>
+                    <h3 class="technique-title">Charcoal Expression</h3>
+                    <p>Bold charcoal methods for dramatic portraits with rich blacks, subtle grays, and expressive mark-making techniques.</p>
+                </div>
+                <div class="technique-card animate-on-scroll">
+                    <div class="technique-icon">🔄</div>
+                    <h3 class="technique-title">Comparative Measurement</h3>
+                    <p>Classical observational techniques using measuring, comparison, and accurate proportion assessment from life.</p>
+                </div>
+                <div class="technique-card animate-on-scroll">
+                    <div class="technique-icon">🎯</div>
+                    <h3 class="technique-title">Anatomical Accuracy</h3>
+                    <p>Scientific understanding of facial anatomy, bone structure, and muscle forms that create believable portrait drawings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Start Your Portrait Drawing Journey</h2>
+                <p class="section-subtitle">Master portrait drawing with our comprehensive 10-session program</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card trial animate-on-scroll">
+                    <div class="price">$50</div>
+                    <div class="price-period">Trial Class</div>
+                    <ul class="pricing-features">
+                        <li>3-hour intensive class</li>
+                        <li>Introduction to portrait drawing</li>
+                        <li>Basic proportion techniques</li>
+                        <li>All materials provided</li>
+                        <li>Live model session</li>
+                        <li>Small group setting (max 12 students)</li>
+                        <li>Take home your artwork</li>
+                        <li>Perfect for beginners</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary ripple">Try Portrait Drawing</a>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <div class="price">$500</div>
+                    <div class="price-period">10-Session Complete Course</div>
+                    <ul class="pricing-features">
+                        <li>10 x 3-hour comprehensive classes</li>
+                        <li>All premium materials included</li>
+                        <li>Live models for every session</li>
+                        <li>Graphite, charcoal & ink techniques</li>
+                        <li>Small class size (max 12 students)</li>
+                        <li>Portfolio development guidance</li>
+                        <li>6-month make-up validity</li>
+                        <li>Certificate of completion</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary ripple">Start Complete Course</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Class Schedule</h2>
+                <p class="section-subtitle">Choose the time that works best for your portrait drawing journey</p>
+            </div>
+            <div class="schedule-cards">
+                <div class="schedule-card animate-on-scroll">
+                    <div class="schedule-icon">📅</div>
+                    <h3 class="schedule-day">Weekday Classes</h3>
+                    <div class="schedule-time">Multiple Times Available</div>
+                    <p class="schedule-description">Afternoon and evening sessions with live models and natural studio lighting</p>
+                </div>
+                <div class="schedule-card animate-on-scroll">
+                    <div class="schedule-icon">🌅</div>
+                    <h3 class="schedule-day">Weekend Classes</h3>
+                    <div class="schedule-time">Saturday & Sunday</div>
+                    <p class="schedule-description">Weekend sessions perfect for working professionals and serious art students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Gallery Section -->
+    <section id="gallery" class="student-gallery-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Student Portrait Masterpieces</h2>
+                <p class="section-subtitle">Discover the remarkable portrait drawings created by our students</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2023/07/img-3286-2-scaled-1.jpg" alt="Portrait Progression">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Grisaille Portrait</div>
+                        <div class="overlay-student">Advanced Student Work</div>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2023/07/IMG_6063.jpg" alt="Anatomy Study">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Anatomy Study</div>
+                        <div class="overlay-student">Student Work</div>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2022/07/portrait-example-scaled.jpg" alt="Still Life Study">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Woman's Portrait</div>
+                        <div class="overlay-student"></div>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2022/07/draw-heathcliff.jpg" alt="Oil Portrait">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Old Master Study</div>
+                        <div class="overlay-student">Advanced Student Work</div>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2024/09/IMG_6812-1.jpg" alt="Portrait Drawing">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Portrait Drawing</div>
+                        <div class="overlay-student">Student Work</div>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://drawpaint-sg.com/wp-content/uploads/2023/07/girlportrait-scaled-1.jpg" alt="Studio Environment">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">Our Studio Space</div>
+                        <div class="overlay-student">Learning Environment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cta animate-on-scroll">
+                <p>Ready to create your own portrait masterpiece?</p>
+                <a href="#pricing" class="cta-primary ripple">Start Your Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Showcase Section -->
+    <section class="studio-showcase">
+        <div class="container">
+            <div class="studio-content">
+                <div class="studio-text animate-on-scroll">
+                    <h2 class="section-title">Our Classical Art Studio</h2>
+                    <p class="section-subtitle">Experience portrait drawing in Singapore's premier traditional art studio, designed for classical realism education and live model work.</p>
+                    <ul class="studio-features">
+                        <li>Natural north-facing light for consistent illumination</li>
+                        <li>Live portrait models and classical cast collection</li>
+                        <li>Professional-grade materials and drawing equipment</li>
+                        <li>Inspiring shophouse environment with high ceilings</li>
+                        <li>Small class sizes for personalized instruction</li>
+                    </ul>
+                </div>
+                <div class="studio-carousel animate-on-scroll">
+                    <div class="carousel-container">
+                        <div class="carousel-slides" id="studioSlides">
+                            <div class="carousel-slide">
+                                <img src="https://drawpaint-sg.com/wp-content/uploads/2024/09/IMG_0507-1024x768.jpg" alt="Main Studio Space">
+                                <div class="carousel-overlay">
+                                    <div class="carousel-title">Natural Light Studio</div>
+                                    <div class="carousel-description">Spacious studio with natural lighting perfect for portrait drawing and observation</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://drawpaint-sg.com/wp-content/uploads/2023/07/IMG_6812-1-669x1024.jpg" alt="Student at Work">
+                                <div class="carousel-overlay">
+                                    <div class="carousel-title">Students at Work</div>
+                                    <div class="carousel-description">Individual easels and personalized instruction in our portrait classes</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://drawpaint-sg.com/wp-content/uploads/2025/08/IMG_0618-min-scaled.jpg" alt="Studio Materials">
+                                <div class="carousel-overlay">
+                                    <div class="carousel-title">Professional Materials</div>
+                                    <div class="carousel-description">High-quality drawing materials and reference materials available</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://drawpaint-sg.com/wp-content/uploads/2025/07/Portrait-Artist-and-Model-min.png" alt="Studio Overview">
+                                <div class="carousel-overlay">
+                                    <div class="carousel-title">Classical Learning Environment</div>
+                                    <div class="carousel-description">Traditional atelier-style setup for serious art education</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-nav carousel-prev" id="prevBtn">‹</button>
+                        <button class="carousel-nav carousel-next" id="nextBtn">›</button>
+                        
+                        <div class="carousel-dots" id="carouselDots">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="animate-on-scroll">Ready to Master Portrait Drawing?</h2>
+            <p class="animate-on-scroll">Join Singapore's premier traditional art school and develop the skills to create stunning, lifelike portrait drawings</p>
+            <div class="cta-buttons animate-on-scroll">
+                <a href="#" class="cta-primary ripple" id="openContactForm">Begin Your Portrait Journey</a>
+                <a href="tel:97314874" class="cta-secondary">Call: 9731 4874</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="contact-modal">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Begin Your Portrait Journey</h2>
+                <p class="modal-subtitle">Ready to master portrait drawing? Let's find the perfect course for you.</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label class="form-label">First Name *</label>
+                        <input type="text" class="form-input" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name *</label>
+                        <input type="text" class="form-input" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Course Interest *</label>
+                    <select class="form-select" name="courseType" required>
+                        <option value="">Select your preference</option>
+                        <option value="Trial Class ($50)">Trial Class - $50 (3-hour introduction)</option>
+                        <option value="10-Session Complete Course ($500)">10-Session Complete Course - $500</option>
+                        <option value="Private Session ($200)">Private Session - $200 (2-hour one-on-one)</option>
+                        <option value="General Inquiry">General Inquiry - Tell me more</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Experience Level</label>
+                    <select class="form-select" name="experience">
+                        <option value="">Select your level</option>
+                        <option value="Complete Beginner">Complete Beginner</option>
+                        <option value="Some Drawing Experience">Some Drawing Experience</option>
+                        <option value="Intermediate Artist">Intermediate Artist</option>
+                        <option value="Advanced/Professional">Advanced/Professional</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Preferred Medium</label>
+                    <select class="form-select" name="medium">
+                        <option value="">Any preference?</option>
+                        <option value="Graphite Pencil">Graphite Pencil</option>
+                        <option value="Charcoal">Charcoal</option>
+                        <option value="Ink & Pen">Ink & Pen Work</option>
+                        <option value="Conte Crayon">Conte Crayon</option>
+                        <option value="Mixed Media">Mixed Media</option>
+                        <option value="All Techniques">All Techniques</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message or Questions</label>
+                    <textarea class="form-textarea" name="message" placeholder="Tell us about your portrait drawing goals, any specific techniques you'd like to learn, or questions about our courses..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Inquiry</button>
+                
+                <div class="success-message" id="successMessage">
+                    <span class="success-icon">✏️</span>
+                    <div class="success-title">Message Sent Successfully!</div>
+                    <div class="success-text">Thank you! Your portrait drawing inquiry has been sent. We'll contact you within 24 hours with course details and next steps.</div>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <span class="error-icon">❌</span>
+                    <div class="success-title">Oops! Something went wrong</div>
+                    <div class="success-text">Please try again, or contact us directly at <strong>9731 4874</strong> or <strong>info@drawpaint-sg.com</strong></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="#" class="whatsapp-button" id="whatsappButton">
+        <span class="whatsapp-tooltip">Chat about portrait classes</span>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Visit Our Studio</h3>
+                    <p>20 Dublin Road, Floor 2<br>
+                    Singapore 239809<br><br>
+                    Classical realism studio with<br>
+                    natural light & live models</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Tel/WhatsApp: <a href="tel:97314874">9731 4874</a><br>
+                    Email: <a href="mailto:info@drawpaint-sg.com">info@drawpaint-sg.com</a><br><br>
+                    <a href="https://drawpaint-sg.com/schedule">View Class Schedule</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>What You'll Learn</h3>
+                    <p>Classical portrait techniques<br>
+                    Facial anatomy & proportions<br>
+                    Live model drawing methods<br>
+                    Professional presentation<br>
+                    Portfolio development</p>
+                </div>
+            </div>
+            <p>&copy; 2025 Classical Realism Singapore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(250, 249, 246, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(44, 44, 44, 0.15)';
+            } else {
+                header.style.background = 'rgba(250, 249, 246, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Module card hover effects
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-20px) rotateX(5deg)';
+                this.style.boxShadow = '0 30px 60px rgba(44, 44, 44, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0deg)';
+                this.style.boxShadow = '0 15px 35px rgba(44, 44, 44, 0.1)';
+            });
+        });
+
+        // Contact Form Modal functionality
+        const openContactFormBtn = document.getElementById('openContactForm');
+        const contactModal = document.getElementById('contactModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Open modal
+        if (openContactFormBtn) {
+            openContactFormBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Close modal
+        function closeModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            contactForm.reset();
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        // Close modal when clicking outside
+        if (contactModal) {
+            contactModal.addEventListener('click', (e) => {
+                if (e.target === contactModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitBtn = contactForm.querySelector('.form-submit');
+                const originalText = submitBtn.textContent;
+                
+                // Hide any previous messages
+                successMessage.classList.remove('show');
+                errorMessage.classList.remove('show');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                try {
+                    // Send to Formspree
+                    const response = await fetch('https://formspree.io/f/mpwlrqll', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: data.email,
+                            name: `${data.firstName} ${data.lastName}`,
+                            phone: data.phone,
+                            courseType: data.courseType,
+                            experience: data.experience,
+                            medium: data.medium,
+                            message: data.message,
+                            _replyto: data.email,
+                            _subject: `Portrait Drawing Inquiry - ${data.firstName} ${data.lastName}`
+                        })
+                    });
+
+                    if (response.ok) {
+                        successMessage.classList.add('show');
+                        contactForm.reset();
+                        setTimeout(() => {
+                            closeModal();
+                        }, 4000);
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                } catch (error) {
+                    errorMessage.classList.add('show');
+                    console.error('Form submission error:', error);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
+        }
+
+        // Studio Carousel functionality
+        const studioSlides = document.getElementById('studioSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function updateCarousel() {
+            const translateX = -currentSlide * 100;
+            studioSlides.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-play carousel
+        let carouselInterval = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        const carousel = document.querySelector('.studio-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                carouselInterval = setInterval(nextSlide, 5000);
+            });
+        }
+        
+        // WhatsApp button functionality
+        const whatsappButton = document.getElementById('whatsappButton');
+        if (whatsappButton) {
+            whatsappButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const phone = '6597314874';
+                const message = encodeURIComponent(`Hi! I'm interested in learning portrait drawing. Could you tell me more about your courses and schedule?`);
+                
+                const whatsappWeb = `https://wa.me/${phone}?text=${message}`;
+                window.open(whatsappWeb, '_blank');
+            });
+        }
+
+        // Auto-open contact form from Google Ads sitelink
+        window.addEventListener('load', function() {
+            if (window.location.hash === '#contact-form') {
+                const contactModal = document.getElementById('contactModal');
+                if (contactModal) {
+                    contactModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+                
