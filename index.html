@@ -1358,7 +1358,25 @@
             }
 
             .stats-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
                 text-align: center;
+                justify-content: center;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .stat-item {
+                padding: 15px 10px;
+            }
+
+            .stat-number {
+                font-size: 2.8rem;
+            }
+
+            .stat-label {
+                font-size: 1rem;
             }
 
             .stats-single-image {
